@@ -18,7 +18,7 @@ div.content {
   height: 1000px;
 }
 
-.parent {
+/* .parent {
   border: 1px solid black;
   margin: 1rem;
   padding: 2rem 2rem;
@@ -29,6 +29,12 @@ div.content {
   border: 1px solid red;
   padding: 1rem 1rem;
   vertical-align: middle;
+} */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
 }
 
 /*---------- Fonts -------------------*/
@@ -154,14 +160,35 @@ div.navigation-menu {
 
 /*------------- Post Settings ---------------*/
 
+a.new-post-link {
+  border: none;
+  border-radius: 30px;
+  color: white;
+  background-color: #1391CC;
+  text-align: center;
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px 10px;
+  margin: 3px 3px 3px 3px;
+  /* display:block; */
+  width: 173px;
+  height: 30px;
+  text-decoration: none;
+  line-height: 2;
+}
+
+
 .post-button, input[type=submit] {
   border: none;
+  border-radius: 30px;
   color: white;
   background-color: #1391CC;
   text-align: center;
   display: inline-block;
   font-family: Arial, Helvetica, sans-serif;
   padding: 3px;
+  width: 70%;
+  height: 40px;
 }
 
 li.each-message {
@@ -179,4 +206,32 @@ li.each-message {
 .profile-link {
   margin-bottom: 0px;
   margin-top: 0px;
+}
+
+ul.Comment-List {
+  padding: 25px 20px 25px 40px;
+  margin-right: 0;
+  margin-left: 0;
+  margin-top: -30px;
+  margin-bottom: 30px;
+  list-style-type: repeating-emoji;
+  background-color: #fff;
+  display:table;
+  width: 90%;
+}
+
+@counter-style repeating-emoji {
+  system: cyclic;
+  symbols: "\1F431" "\1F436" "\1F984"; // unicode code point
+  suffix: " ";
+}
+
+.repeating-counter-rule {
+  list-style-type: repeating-emoji;
+}
+
+/* Dashed border */
+hr.dashed {
+  border-top: 3px dashed #1391CC;
+  margin-bottom: 30px;
 }

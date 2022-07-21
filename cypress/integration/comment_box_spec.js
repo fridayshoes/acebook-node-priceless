@@ -19,7 +19,7 @@ describe("Timeline", function() {
 
     // submit a post
     cy.visit("/posts");
-    cy.contains("New post").click();
+    cy.contains("Create New Post").click();
     cy.get("#new-post-form").find('#message').type("Hello, world!");
     cy.get("#new-post-form").submit();
   

@@ -20,7 +20,7 @@ describe("Timeline", () => {
 
       // submit a post
       cy.visit("/posts");
-      cy.contains("New post").click();
+      cy.contains("Create New Post").click();
 
       cy.get("#new-post-form").find('#message').type("This is the first line.\nThis is the second line.\nThis is the last line.");
       cy.get("#new-post-form").submit();

@@ -16,7 +16,7 @@ describe("User can view others' Profile Page", function() {
 
     // submit a post
     cy.visit("/posts");
-    cy.contains("New post").click();
+    cy.contains("Create New Post").click();
 
     cy.get("#new-post-form").find('#message').type("Hello, world!");
     cy.get("#new-post-form").submit();
@@ -63,7 +63,7 @@ describe("User can view others' Profile Page", function() {
 
     // submit a post
     cy.visit("/posts");
-    cy.contains("New post").click();
+    cy.contains("Create New Post").click();
 
     cy.get("#new-post-form").find('#message').type("Hello, world!");
     cy.get("#new-post-form").submit();
