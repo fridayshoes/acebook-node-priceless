@@ -1,6 +1,6 @@
 describe("User can view others' Profile Page", function() {
   it('goes to the Profile Page', () => {
-    // sign up & log out
+    // sign up
     cy.visit("/users/new");
     cy.get("#email").type("someone@example.com");
     cy.get("#password").type("password");
@@ -43,7 +43,7 @@ describe("User can view others' Profile Page", function() {
 
     // click to go through to the other person's page
     cy.get(".profile-link").first().submit();
-    cy.get('.greeting').should("contain", "This profile page is about someone@example.com");
+    cy.get('.greeting').should("contain", "Welcome to someone@example.com");
   });
 
   it('checks for another users posts', () => {
@@ -87,7 +87,7 @@ describe("User can view others' Profile Page", function() {
 
     // click to go through to the other person's page
     cy.get(".profile-link").first().submit();
-    cy.get('.greeting').should("contain", "This profile page is about someone@example.com");
+    cy.get('.greeting').should("contain", "Welcome to someone@example.com");
 
     // expect post
     cy.get(".post-container").should("contain", "Hello, world!");

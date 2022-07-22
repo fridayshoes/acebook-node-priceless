@@ -1,11 +1,11 @@
 <h2 class="title">Profile Page</h2>
 
-<p class="greeting" style="color: #fff;">This profile page is about {{email}}</p>
+<h4 class="greeting" style="color: #fff;">Welcome to {{email}}'s profile.<br>Here are my recent posts.</h4>
 <div class="posts">
   <ul class="posts" style="background-color:rgba(255,255,255,0.75); padding: 4%;">
   {{#each posts}}
     <div class="post-container">
-      <li class="each-message">{{this.message}}<br>{{this.date}}<br>{{this.user}}
+      <li class="each-message" style="padding: 4%";>Posted on {{this.date}}<br><br><h2>{{this.message}}</h2><br><br>Posted by {{this.user}}
         <form action="/posts/delete" method="post" class="delete" >
           <input name="_id" type="hidden" value="{{this._id}}">
           <input name="delete" type="submit" value ="🗑️">
@@ -41,7 +41,7 @@
     {{/each}}
   </ul>
 
-<h2 style="color: #fff;">{{email}}'s wall</h2>
+<h4 style="color: #fff;">Leave a message on {{email}}'s wall below.</h4>
   <div id="wall">
     {{#each wallPosts}}
       <div class="post-container">
