@@ -1,28 +1,41 @@
 <h2 class="title">Profile Page</h2>
 
-<p class="greeting" style="color: #fff;">This profile page is about {{email}}</p>
+<h4 class="greeting" style="color: #fff;">Welcome to {{email}}'s profile.<br>Here are my recent posts.</h4>
+<form action="/posts/new" method="post">
+  <input name="recipient" type="hidden" value="{{email}}">
+  <input style="width: 300px;" id="write-on-wall" type="submit" value="Write on {{email}}'s wall">
+</form>
 <div class="posts">
   <ul class="posts" style="background-color:rgba(255,255,255,0.75); padding: 4%;">
   {{#each posts}}
     <div class="post-container">
-      <li class="each-message">{{this.message}}<br>{{this.date}}<br>{{this.user}}
-      {{#if this.canDelete}}
-        <form action="/posts/delete" method="post" class="delete" >
-          <input name="_id" type="hidden" value="{{this._id}}">
-          <input name="delete" type="submit" value ="🗑️">
-        </form>
-      {{/if}}
-      </li>
+      <div class="grid-container">
+        <div class="grid-child">
+          {{!--<form action="/posts/new" method="post">
+            <input name="recipient" type="hidden" value="{{this.user}}">
+            <input id="write-on-wall" type="submit" value="Write on {{this.user}}'s wall">
+          </form>--}}
+        </div>
+        <div class="grid-child">  
+          {{#if this.canDelete}}
+            <form action="/posts/delete" method="post" class="delete" >
+              <input name="_id" type="hidden" value="{{this._id}}">
+              <input name="delete" type="submit" value ="Delete 🗑️">
+            </form>
+          {{/if}}
+        </div>
+      </div>
+      <li class="each-message" style="padding: 4%";>Posted on {{this.date}}<br><br><h2>{{this.message}}</h2><br><br>Posted by {{this.user}}</li>
       <div class="like-container">
         <form action="/posts/updateLikes/{{this.id}}" method="post">
-          <button id="like-button"> 👍 </button>
+          <button id="like-button"> Like 👍 </button>
+          <span id="like-counter">{{this.likes.count}}</span>
         </form> 
-        <span id="like-counter">{{this.likes}}</span>
       </div>
-        <form action="/posts/new" method="post">
+        {{!-- <form action="/posts/new" method="post">
           <input name="recipient" type="hidden" value="{{this.user}}">
           <input id="write-on-wall" type="submit" value="Write on {{this.user}}'s wall">
-        </form> 
+        </form> --}}
     </div>
     
     <div class = "comments">
@@ -39,27 +52,33 @@
           {{/each}}
         </ul>
       </div>
+      <hr class="dashed">
     </div>
     {{/each}}
   </ul>
 
-<h2 style="color: #fff;">{{email}}'s wall</h2>
-  <div id="wall">
+<h4 style="color: #fff;">Leave a message on {{email}}'s wall below.</h4>
+  <div id="wall" class="posts" style="background-color:rgba(255,255,255,0.75); padding: 4%;">
     {{#each wallPosts}}
       <div class="post-container">
-        <li class="each-message">{{this.message}}<br>{{this.date}}<br>{{this.user}}
-        {{#if this.canDelete}}
-          <form action="/posts/delete" method="post" class="delete" >
-            <input name="_id" type="hidden" value="{{this._id}}">
-            <input name="delete" type="submit" value ="🗑️">
-          </form>
-        {{/if}}
-        </li>
+        <div class="grid-container">
+          <div class="grid-child">
+          {{#if this.canDelete}}
+            <form action="/posts/delete" method="post" class="delete" >
+              <input name="_id" type="hidden" value="{{this._id}}">
+              <input name="delete" type="submit" value ="Delete 🗑️">
+            </form>
+          {{/if}}
+          </div>
+          <div class="grid-child">
+          </div>
+        </div>
+        <li class="each-message" style="padding: 4%">Posted on {{this.date}}<br><br><h2>{{this.message}}</h2><br><br>Posted by {{this.user}}</li>
         <div class="like-container">
           <form action="/posts/updateLikes/{{this.id}}" method="post">
-            <button id="like-button"> 👍 </button>
+            <button id="like-button"> Like 👍 </button>
+            <span id="like-counter">{{this.likes.count}}</span>
           </form> 
-          <span id="like-counter">{{this.likes}}</span>
         </div>
       </div>
           
@@ -77,8 +96,8 @@
             {{/each}}
           </ul>
         </div>
+        <hr class="dashed">
       </div>
     {{/each}}
-
   </div>
 </div>

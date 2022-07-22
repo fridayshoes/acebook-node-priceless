@@ -16,7 +16,7 @@ describe("like button", function(){
 
       // submit a post
       cy.visit("/posts");
-      cy.contains("New post").click();
+      cy.contains("Create New Post").click();
       cy.get("#new-post-form").find('#message').type("Hello, world!");
       cy.get("#new-post-form").submit();
     })
@@ -31,7 +31,7 @@ describe("like button", function(){
   it('can like the most recent post when there are multiple posts', function(){
     // submit a second post
     cy.visit("/posts");
-    cy.contains("New post").click();
+    cy.contains("Create New Post").click();
     cy.get("#new-post-form").find('#message').type("I am Matilda cakes");
     cy.get("#new-post-form").submit();
 
@@ -45,7 +45,7 @@ describe("like button", function(){
 
   it('can like the least recent when there are multiple posts', function(){
     cy.visit("/posts");
-    cy.contains("New post").click();
+    cy.contains("Create New Post").click();
     cy.get("#new-post-form").find('#message').type("Most recent post");
     cy.get("#new-post-form").submit();
 
@@ -59,7 +59,7 @@ describe("like button", function(){
 
   it('cannot like the same post twice for the same user', function() {
     cy.visit('/posts');
-    cy.contains("New post").click();
+    cy.contains("Create New Post").click();
     cy.get('#new-post-form').find('#message').type('a post to be liked');
     cy.get("#new-post-form").submit();
 
@@ -72,7 +72,7 @@ describe("like button", function(){
 
   it('two different users can like the same post, making total likes 2', () => {
     cy.visit('/posts');
-    cy.contains("New post").click();
+    cy.contains("Create New Post").click();
     cy.get('#new-post-form').find('#message').type('a post to be liked');
     cy.get("#new-post-form").submit();
 

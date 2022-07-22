@@ -17,7 +17,7 @@ describe("Authentication", () => {
       cy.get("#submit").click();
 
       cy.url().should("include", "/posts");
-      cy.contains("a", "New post");
+      cy.contains("a", "Create New Post");
     }); 
   });
 });

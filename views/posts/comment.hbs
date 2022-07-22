@@ -1,7 +1,8 @@
+<h2 class="title">Add Comment</h2>
 {{#each posts}}
 <form id="comment-post-form" action="/posts/{{this._id}}/comment" method="post">
-  <label for="comments">Write your comment: </label>
-  <input id="comments" type="text" name="comments" value="">
+  <label for="comments">Write your comment: (required)</label>
+  <input id="comments" type="text" name="comments" required rows="2" cols="50" value="">
   <input type="submit" value="Submit">
 </form>
 
