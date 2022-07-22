@@ -24,21 +24,34 @@ https://trello.com/b/jaHA0ziM/priceless-ace-book
 ## Feature List
 
 - User can signup for an account
-   - Signing up twice with the same email address is not allowed
+  - Signing up twice with the same email address is not allowed
+  - Signing with blank input fields is not allowed
 - User can signin with an account
+  - Signing in with blank input fields is not allowed
 - User can create a post
-   - A post can have multiple lines, it is displayed correctly on wall
-   - Posts have date
-   - Posts are displayed with most recent on top
+  - A post can have multiple lines, it is displayed correctly on wall
+  - Posts have date
+  - Posts are displayed with most recent on top
 - User can delete a post
-- Users can react to a post by 
-   - liking a post (each user can only like a post once)
-   - commenting on a post
+- Users can react to a post by
+  - liking a post (each user can only like a post once)
+  - commenting on a post
 - User has a Profile Page
-   - User can make posts to another user on Profile Page
-   - User can see posts made by themselves and made to them on Profile Page
-- User passwords are encrypted before they are stored in the database
+  - User can make posts to another user on Profile Page
+  - User can see posts made by themselves and made to them on Profile Page
+- User passwords are encrypted using Bcrypt before they are stored in the database
 
+## Screenshots
+
+![](screenshots/01_AB_Homepage.jpg)
+
+![](screenshots/02_AB_SignUp_Page.jpg)
+
+![](screenshots/03_AB_SignIn_Page.jpg)
+
+![](screenshots/04_AB_Main_Wall_Page.jpg)
+
+![](screenshots/05_AB_Profile_Page.jpg)
 
 ## Quickstart
 
@@ -74,6 +87,13 @@ https://trello.com/b/jaHA0ziM/priceless-ace-book
 7. Start MongoDB
    ```
    brew services start mongodb-community@5.0
+   ```
+
+### Check Mongo DB is running
+
+1. On WSL2
+   ```
+   sudo service mongodb start
    ```
 
 ### Start
@@ -113,7 +133,7 @@ so that integration tests do not interact with the development server.
 
 ## Test Coverage
 
-Test coverage is shown for unit tests by using collectCoverageFrom in  jest.config.js. Jest calculates the coverage from the following directories:
+Test coverage is shown for unit tests by using collectCoverageFrom in jest.config.js. Jest calculates the coverage from the following directories:
 
 - ./controllers/\*\*
 - ./models/\*\*
@@ -131,10 +151,13 @@ MongoDB Shell (mongosh) documentation: https://www.mongodb.com/docs/mongodb-shel
 The MongoDB Shell, mongosh, is a fully functional JavaScript and Node.js 16.x REPL environment for interacting with MongoDB deployments. Mongosh can be used to test queries and operations directly with the database.
 
 With MongoDB Shell, we can interact with MongoDB using command lines in termainl:
+
 ```
 $ mongosh
 ```
+
 To see all databases available on the current connection, type:
+
 ```
 > show dbs
 acebook_test  64.00 KiB
@@ -144,12 +167,14 @@ local         72.00 KiB
 ```
 
 To connect to one database:
+
 ```
 > use acebook_test
 switched to db acebook_test
 ```
 
 When connected to a database, it is possible to show the "collections", equialvent to TABLES in SQL:
+
 ```
 > show collections
 posts
@@ -157,6 +182,7 @@ users
 ```
 
 It is possible to look into these collections:
+
 ```
 > db.posts.find()
 [
@@ -175,11 +201,11 @@ It is possible to look into these collections:
 ```
 
 It is also possible to view local MongoDB with TablePlus.
- - Create a new connection...
- - Mongo -> Create
- - Name: Acebook_test; URL: mongodb://0.0.0.0/acebook_test
- - Connect
 
+- Create a new connection...
+- Mongo -> Create
+- Name: Acebook_test; URL: mongodb://0.0.0.0/acebook_test
+- Connect
 
 ## MongoDB Connection Errors?
 
@@ -189,4 +215,3 @@ Some people occasionally experience MongoDB connection errors when running the t
 - Check that it's running using `brew services list`
 
 If you have issues that are not resolved by these tips, please reach out to a coach and, once the issue is resolved, we can add a new tip!
-
