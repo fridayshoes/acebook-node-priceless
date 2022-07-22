@@ -28,6 +28,8 @@ https://trello.com/b/jaHA0ziM/priceless-ace-book
 - User can signin with an account
 - User can create a post
    - A post can have multiple lines, it is displayed correctly on wall
+   - Posts have date
+   - Posts are displayed with most recent on top
 - User can delete a post
 - Users can react to a post by 
    - liking a post (each user can only like a post once)
@@ -115,6 +117,8 @@ Test coverage is shown for unit tests by using collectCoverageFrom in  jest.conf
 
 - ./controllers/\*\*
 - ./models/\*\*
+
+Cypress test coverage is currently unavailable.
 
 ## MongoDB Tutorial
 
