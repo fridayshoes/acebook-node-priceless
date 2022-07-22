@@ -11,10 +11,7 @@ It uses:
 - [ESLint](https://eslint.org) for linting.
 - [Jest](https://jestjs.io/) for testing.
 - [Cypress](https://www.cypress.io/) for end-to-end testing.
-
-## Card wall
-
-REPLACE THIS TEXT WITH A LINK TO YOUR CARD WALL
+- [Bcrypt](https://www.npmjs.com/package/bcrypt) for password encryption.
 
 ## Github page:
 
@@ -23,6 +20,23 @@ https://github.com/fridayshoes/acebook-node-priceless
 ## Trello board:
 
 https://trello.com/b/jaHA0ziM/priceless-ace-book
+
+## Feature List
+
+- User can signup for an account
+   - Signing up twice with the same email address is not allowed
+- User can signin with an account
+- User can create a post
+   - A post can have multiple lines, it is displayed correctly on wall
+- User can delete a post
+- Users can react to a post by 
+   - liking a post (each user can only like a post once)
+   - commenting on a post
+- User has a Profile Page
+   - User can make posts to another user on Profile Page
+   - User can see posts made by themselves and made to them on Profile Page
+- User passwords are encrypted before they are stored in the database
+
 
 ## Quickstart
 
@@ -73,6 +87,8 @@ https://trello.com/b/jaHA0ziM/priceless-ace-book
 The server must be running locally with test configuration for the
 integration tests to pass.
 
+1. Start the test server
+
 ```
 npm run start:test
 ```
@@ -95,12 +111,10 @@ so that integration tests do not interact with the development server.
 
 ## Test Coverage
 
-Test coverage is shown for unit tests by using collectCoverageFrom in the jest.config.js. Jest will calculate the coverage based one the following criteria:
+Test coverage is shown for unit tests by using collectCoverageFrom in  jest.config.js. Jest calculates the coverage from the following directories:
 
-- ./app.js
 - ./controllers/\*\*
 - ./models/\*\*
-- ./routes/\*\*
 
 ## MongoDB Tutorial
 
@@ -110,7 +124,7 @@ Mongoosh documentation: https://mongoosejs.com/docs/queries.html
 
 MongoDB Shell (mongosh) documentation: https://www.mongodb.com/docs/mongodb-shell/
 
-The MongoDB Shell, mongosh, is a fully functional JavaScript and Node.js 16.x REPL environment for interacting with MongoDB deployments. You can use the MongoDB Shell to test queries and operations directly with your database.
+The MongoDB Shell, mongosh, is a fully functional JavaScript and Node.js 16.x REPL environment for interacting with MongoDB deployments. Mongosh can be used to test queries and operations directly with the database.
 
 With MongoDB Shell, we can interact with MongoDB using command lines in termainl:
 ```
@@ -172,13 +186,3 @@ Some people occasionally experience MongoDB connection errors when running the t
 
 If you have issues that are not resolved by these tips, please reach out to a coach and, once the issue is resolved, we can add a new tip!
 
-## Feature List
-
-- User can signup for an account
-- User can signin with an account
-- User can create a post
-- User can create a post with multiple lines
-- User can delete a post
-- Users can like a post
-- Users cannout signup for an account with the same email address
--
