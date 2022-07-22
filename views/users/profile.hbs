@@ -6,10 +6,12 @@
   {{#each posts}}
     <div class="post-container">
       <li class="each-message" style="padding: 4%";>Posted on {{this.date}}<br><br><h2>{{this.message}}</h2><br><br>Posted by {{this.user}}
+      {{#if this.canDelete}}
         <form action="/posts/delete" method="post" class="delete" >
           <input name="_id" type="hidden" value="{{this._id}}">
           <input name="delete" type="submit" value ="🗑️">
         </form>
+      {{/if}}
       </li>
       <div class="like-container">
         <form action="/posts/updateLikes/{{this.id}}" method="post">
@@ -46,10 +48,12 @@
     {{#each wallPosts}}
       <div class="post-container">
         <li class="each-message">{{this.message}}<br>{{this.date}}<br>{{this.user}}
+        {{#if this.canDelete}}
           <form action="/posts/delete" method="post" class="delete" >
             <input name="_id" type="hidden" value="{{this._id}}">
             <input name="delete" type="submit" value ="🗑️">
           </form>
+        {{/if}}
         </li>
         <div class="like-container">
           <form action="/posts/updateLikes/{{this.id}}" method="post">
@@ -57,10 +61,6 @@
           </form> 
           <span id="like-counter">{{this.likes}}</span>
         </div>
-          <form action="/posts/new" method="post">
-            <input name="recipient" type="hidden" value="{{this.user}}">
-            <input id="write-on-wall" type="submit" value="Write on {{this.user}}'s wall">
-          </form> 
       </div>
           
       <div class = "comments">

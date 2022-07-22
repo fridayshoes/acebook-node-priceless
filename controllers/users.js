@@ -58,6 +58,11 @@ const UsersController = {
         throw err;
       }
       posts.reverse() // reorders posts, so newest post is always at the top of the list
+      posts.forEach((post) => {
+        if (post.user === req.session.user.email) {
+          Object.assign(post, {canDelete: true})
+        }
+      })
       res.render("users/profile", {posts: posts, email: accountEmail, session: req.session});
     });
   },
@@ -65,15 +70,30 @@ const UsersController = {
     console.log(req.session);
     console.log(req.body);
     Post.find({user: req.body.email}, (err, posts) => {
-      if (err) {
-        throw err;
+      if (err) { 
+        throw err; 
       } else {
-      const userPosts = posts.reverse() // reorders posts, so newest post is always at the top of the list
+      const userPosts = posts.reverse()
+      userPosts.forEach((post) => {
+        if (post.user === req.session.user.email) {
+          Object.assign(post, {canDelete: true})
+        }
+      })
+
       Post.find({recipient: req.body.email}, (err, posts) => {
-        console.log(posts);
-        const wallPosts = posts.reverse();
-        res.render("users/profile", {posts: userPosts, wallPosts: wallPosts, email: req.body.email, session: req.session});
-      })}
+        if (err) { 
+          throw err;
+        } else if (posts !== []) { 
+          const wallPosts = posts.reverse();
+          wallPosts.forEach((post) => {
+            if (post.user === req.session.user.email) {
+              Object.assign(post, {canDelete: true})
+            }
+        })
+          res.render("users/profile", {posts: userPosts, wallPosts: wallPosts, email: req.body.email, session: req.session});
+        }
+      }) 
+      }
     })
   }
 };
