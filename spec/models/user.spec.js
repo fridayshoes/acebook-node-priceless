@@ -84,6 +84,7 @@ describe("User model", () => {
       });
     });
   });
+
   it("it can't save a user, if the same user already exists", (done) => {
   
     // To create one user
@@ -139,7 +140,6 @@ describe("User model", () => {
         name: 'firstName',
         surname: 'surname'
       });
-      console.log(user);
 
       // saving user to database
       user.save((err) => {
@@ -172,7 +172,6 @@ describe("User model", () => {
         name: 'firstName',
         surname: 'surname'
       });
-      console.log(user);
 
       // saving user to database
       user.save((err) => {
