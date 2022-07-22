@@ -16,7 +16,6 @@ const SessionsController = {
         res.redirect("/sessions/new");
       } else {
         bcrypt.compare(password, user.password, function(err, hashComparison) {
-          console.log(hashComparison);
           if (!hashComparison) {
             res.redirect("/sessions/new");
           } else {

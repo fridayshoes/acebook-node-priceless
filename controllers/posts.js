@@ -39,7 +39,7 @@ const PostsController = {
       }
     })
   },
-  // implementing a delete function:
+  
   Delete: (req, res) => {
     Post.findOneAndDelete(
       {_id: req.body._id},
@@ -67,9 +67,6 @@ const PostsController = {
 
   Comment: function(req, res) {
     Post.find({_id: req.params._id}, function(err, post) {
-      console.log(err)
-      console.log("///")
-      console.log(post)
       if (err) {
         throw err;
       }
@@ -90,7 +87,6 @@ const PostsController = {
     res.status(201).redirect('/posts');
     });
   },
-  
 };
 
 module.exports = PostsController;

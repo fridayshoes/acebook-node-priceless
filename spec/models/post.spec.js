@@ -79,58 +79,49 @@ describe("Post model", () => {
   })
   it('can write a comment', function(done) {
     const post = new Post({message: 'some message'});
-
     post.save(function(err) {
       expect(err).toBeNull();
 
       Post.updateOne(
-          {'message': 'some message'},
-          {$set: {'comments': 'amazing'}},
-          function(err) {
-            expect(err).toBeNull();
-
-        Post.find(function(err, posts) {
+        {'message': 'some message'},
+        {$set: {'comments': 'amazing'}},
+        function(err) {
           expect(err).toBeNull();
 
-          expect(posts[0].toObject()).toMatchObject({
-            message: 'some message',
-            comments: ['amazing']
+          Post.find(function(err, posts) {
+            expect(err).toBeNull();
+            expect(posts[0].toObject()).toMatchObject({
+              message: 'some message',
+              comments: ['amazing']
+            });
+            done();
           });
-          done();
-        });
-      });
+        }
+      );
     });
   });
   it('has a user', (done) => {
     var post = new Post({ message: "some message", user: "someone@example.com" });
-    
     post.save((err) => {
       expect(err).toBeNull();
-
       Post.find((err, posts) => {
         expect(err).toBeNull();
-
         expect(posts[0]).toMatchObject({ message: "some message", user: "someone@example.com" });
-
-        
         done();
-      })
-    })
-  })
+      });
+    });
+  });
 
   it('can have a recipient', (done) => {
     var post = new Post({ message: "some message", user: "someone@example.com", recipient: "newperson@email.com" });
-
     post.save((err) => {
       expect(err).toBeNull();
 
       Post.find((err, posts) => {
         expect(err).toBeNull();
-
         expect(posts[0]).toMatchObject({ message: "some message", user: "someone@example.com", recipient: "newperson@email.com"});
-
         done();
-      })
-    })
-  })
+      });
+    });
+  });
 })
