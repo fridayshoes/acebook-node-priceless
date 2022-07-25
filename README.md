@@ -40,6 +40,8 @@ https://trello.com/b/jaHA0ziM/priceless-ace-book
   - User can make posts to another user on Profile Page
   - User can see posts made by themselves and made to them on Profile Page
 - User passwords are encrypted using Bcrypt before they are stored in the database
+- Jedi features
+  - A random emoji is attached to each post comment made.
 
 ## Screenshots
 
