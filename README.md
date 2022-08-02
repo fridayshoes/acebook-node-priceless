@@ -1,6 +1,6 @@
 # Acebook
 
-This is a Node.js template for the Acebook engineering project.
+This is a Node.js engineering team project to create a alternative-reality clone of Facebook.
 
 It uses:
 
@@ -40,6 +40,8 @@ https://trello.com/b/jaHA0ziM/priceless-ace-book
   - User can make posts to another user on Profile Page
   - User can see posts made by themselves and made to them on Profile Page
 - User passwords are encrypted using Bcrypt before they are stored in the database
+- Jedi features
+  - A random emoji is attached to each post comment made.
 
 ## Screenshots
 
@@ -89,12 +91,13 @@ https://trello.com/b/jaHA0ziM/priceless-ace-book
    brew services start mongodb-community@5.0
    ```
 
-### Check Mongo DB is running
+### Check Mongo DB and X Server are running
 
 1. On WSL2
    ```
    sudo service mongodb start
    ```
+   Launch Xserver (with access control disabled for integration tests to work)
 
 ### Start
 
@@ -215,3 +218,7 @@ Some people occasionally experience MongoDB connection errors when running the t
 - Check that it's running using `brew services list`
 
 If you have issues that are not resolved by these tips, please reach out to a coach and, once the issue is resolved, we can add a new tip!
+
+## Known bugs
+
+- User can't see posts made by other users on their own wall when using the profile button on the nav bar, but can see posts made by other users on their own wall when using the profile buttons on the main wall posts.
